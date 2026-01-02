@@ -1,72 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Dr. Gargi Sarkar | Cybercrime & Digital Investigations</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-        content="Academic homepage of Dr. Gargi Sarkar, Postdoctoral Research Scientist working on cybercrime, digital forensics, cyber slavery, and policing systems." />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Smooth scrolling -->
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
-</head>
-
 <body>
+  <div class="site-wrapper">
 
-  <!-- =========================
-       PROFILE HEADER (JS FILLS)
-       ========================= -->
-  <header id="profile-header"></header>
+    <header id="profile-header"></header>
 
-  <!-- =========================
-       TOP NAVIGATION (JS FILLS)
-       ========================= -->
-  <nav id="top-nav" class="top-nav"></nav>
+    <nav id="top-nav" class="top-nav"></nav>
 
-  <!-- =========================
-       ANNOUNCEMENTS
-       ========================= -->
-  <section id="announcements">
-    <h2>Recent Announcements</h2>
-    <div id="announcement-ticker" class="announcement-ticker">
-      <!-- JS injects rotating announcements here -->
-    </div>
-  </section>
+    <section id="announcements" class="announcements-section">
+      <div id="announcement-ticker" class="announcement-ticker"></div>
+    </section>
 
-  <!-- =========================
-       MAIN CONTENT (JS FILLS)
-       ========================= -->
-  <main id="content">
-    <!-- All CV sections rendered dynamically from index.json -->
-  </main>
+    <!-- 🔴 THIS WAS MISSING OR BROKEN -->
+    <main id="content" class="main-content"></main>
 
-  <!-- =========================
-       FOOTER
-       ========================= -->
-  <footer class="site-footer">
-    <p>
-      © <span id="year"></span> Gargi Sarkar ·
-      Built with HTML, CSS, JavaScript & GitHub Pages
-    </p>
-  </footer>
+    <footer class="site-footer">
+      © 2025 Gargi Sarkar
+    </footer>
 
-  <!-- =========================
-       SCRIPTS
-       ========================= -->
-  <script>
-    // Auto-update footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  </div>
 
   <script src="script.js"></script>
-
 </body>
-</html>
