@@ -1,39 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Dr. Gargi Sarkar</title>
-
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="site-wrapper">
 
-    <!-- PROFILE HEADER (filled by script.js) -->
-    <header id="profile-header"></header>
+  <!-- NAV -->
+  <header>
+    <nav>
+      <a href="#announcements">Announcements</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+    </nav>
+  </header>
 
-    <!-- TOP NAVIGATION (filled by script.js) -->
-    <nav id="top-nav" class="top-nav"></nav>
+  <!-- PROFILE -->
+  <section id="hero">
+    <img id="photo" src="" alt="Profile photo">
+    <h1 id="name"></h1>
+    <p id="title"></p>
 
-    <!-- ANNOUNCEMENTS -->
-    <section id="announcements" class="announcements-section">
-      <h2>Announcements</h2>
-      <div id="announcement-ticker" class="announcement-ticker"></div>
-    </section>
+    <div class="links">
+      <a id="email">Email</a> ·
+      <a id="linkedin" target="_blank">LinkedIn</a> ·
+      <a id="github" target="_blank">GitHub</a>
+    </div>
+  </section>
 
-    <!-- 🔴 MAIN CONTENT CONTAINER (CRITICAL) -->
-    <main id="content" class="main-content"></main>
+  <!-- ANNOUNCEMENTS -->
+  <section id="announcements"></section>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      © 2025 Dr. Gargi Sarkar
-    </footer>
+  <!-- PUBLICATIONS -->
+  <section id="publications"></section>
 
-  </div>
+  <!-- EXPERIENCE -->
+  <section id="experience"></section>
 
-  <!-- SCRIPT -->
+  <!-- EDUCATION -->
+  <section id="education"></section>
+
+  <!-- SKILLS -->
+  <section id="skills"></section>
+
   <script src="script.js"></script>
 </body>
 </html>
