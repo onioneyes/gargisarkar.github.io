@@ -1,63 +1,58 @@
 /* =========================================================
-   SAFE QUERY HELPER
+   SAFE DOM QUERY
    ========================================================= */
-const el = (s) => document.querySelector(s);
+const $ = (id) => document.getElementById(id);
 
 /* =========================================================
    FETCH + INIT
    ========================================================= */
 fetch("index.json")
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error("Cannot load index.json");
+    return res.json();
+  })
   .then(data => {
-    /* ---- CORE RENDERING (YOUR WORKING LOGIC) ---- */
     renderAbout(data.about);
-
-    // Announcements are NOT in JSON → derive safely
-    renderAnnouncementsFromPublications(data.publications);
-
+    renderAnnouncements(data.publications);
     renderPublications(data.publications);
-    renderList("experience", data.experience);
-    renderList("education", data.education);
-    renderList("research", data.research);
-    renderList("projects", data.projects);
+    renderExperience(data.experience);
+    renderEducation(data.education);
+    renderResearch(data.research);
+    renderProjects(data.projects);
+    renderTeaching(data.teaching);
+    renderAchievements(data.achievements);
+    renderTalks(data.talks_and_presentations);
+    renderActivities(data.activities);
     renderSkills(data.technical_skills);
-    renderList("teaching", data.teaching);
-    renderList("achievements", data.achievements);
-    renderList("talks_and_presentations", data.talks_and_presentations);
-    renderList("activities", data.activities);
     renderReferences(data.references);
 
-    /* ---- ENHANCEMENTS (SAFE, OPTIONAL) ---- */
     enhanceUI();
   })
-  .catch(err => console.error("JS failed:", err));
+  .catch(err => showFatalError(err.message));
 
 /* =========================================================
-   ABOUT / HERO
+   ABOUT
    ========================================================= */
 function renderAbout(a) {
   if (!a) return;
-  el("#name").textContent = a.name;
-  el("#title").textContent = a.title;
-  el("#photo").src = a.photo?.src || "";
-  el("#email").textContent = a.email;
-  el("#email").href = `mailto:${a.email}`;
+  $("name").textContent = a.name;
+  $("title").textContent = a.title;
+  $("photo").src = a.photo?.src || "";
+  $("email").textContent = a.email;
+  $("email").href = `mailto:${a.email}`;
 }
 
-
 /* =========================================================
-   ANNOUNCEMENTS (DERIVED SAFELY)
+   ANNOUNCEMENTS (derived from publications)
    ========================================================= */
-function renderAnnouncementsFromPublications(pubs) {
-  const container = el("#announcements");
-  if (!container || !pubs) return;
+function renderAnnouncements(pubs) {
+  const c = $("announcements");
+  if (!c || !pubs) return;
 
   const all = [
     ...(pubs.journals || []),
     ...(pubs.conference_proceedings || [])
   ];
-
-  if (!all.length) return;
 
   all
     .filter(p => typeof p.year === "number")
@@ -66,11 +61,8 @@ function renderAnnouncementsFromPublications(pubs) {
     .forEach(p => {
       const d = document.createElement("div");
       d.className = "announce";
-      d.innerHTML = `
-        <h3>${p.title}</h3>
-        <small>${p.venue} (${p.year})</small>
-      `;
-      container.appendChild(d);
+      d.innerHTML = `<h3>${p.title}</h3><small>${p.venue} (${p.year})</small>`;
+      c.appendChild(d);
     });
 }
 
@@ -78,43 +70,154 @@ function renderAnnouncementsFromPublications(pubs) {
    PUBLICATIONS
    ========================================================= */
 function renderPublications(pubs) {
-  const container = el("#publications");
-  if (!container || !pubs) return;
+  const c = $("publications");
+  if (!c || !pubs) return;
 
-  ["journals", "conference_proceedings"].forEach(cat => {
-    (pubs[cat] || []).forEach(pub => {
+  ["journals", "conference_proceedings"].forEach(type => {
+    (pubs[type] || []).forEach(p => {
       const d = document.createElement("div");
       d.className = "pub-item";
       d.innerHTML = `
-        <strong>${pub.title}</strong><br>
-        ${pub.authors.join(", ")}<br>
-        <em>${pub.venue} (${pub.year})</em>
+        <strong>${p.title}</strong><br>
+        ${p.authors.join(", ")}<br>
+        <em>${p.venue} (${p.year})</em>
       `;
-      container.appendChild(d);
+      c.appendChild(d);
     });
   });
 }
 
 /* =========================================================
-   GENERIC LIST RENDERER
+   EXPERIENCE
    ========================================================= */
-function renderList(section, arr = []) {
-  const container = el("#" + section);
-  if (!container || !Array.isArray(arr)) return;
+function renderExperience(arr = []) {
+  const c = $("experience");
+  if (!c) return;
 
-  arr.forEach(item => {
+  arr.forEach(e => {
     const d = document.createElement("div");
     d.className = "item";
+    d.innerHTML = `
+      <strong>${e.role}</strong>, ${e.institution}<br>
+      <em>${e.period}</em><br>
+      ${(e.responsibilities || []).join("<br>")}
+    `;
+    c.appendChild(d);
+  });
+}
 
-    if (typeof item === "string") {
-      d.textContent = "• " + item;
-    } else {
-      d.innerHTML = `
-        <strong>${item.title || item.institution}</strong><br>
-        ${item.details ? item.details.join("<br>") : item.period || ""}
-      `;
-    }
-    container.appendChild(d);
+/* =========================================================
+   EDUCATION
+   ========================================================= */
+function renderEducation(arr = []) {
+  const c = $("education");
+  if (!c) return;
+
+  arr.forEach(e => {
+    const d = document.createElement("div");
+    d.className = "item";
+    d.innerHTML = `
+      <strong>${e.degree}</strong>, ${e.institution}<br>
+      <em>${e.period || e.year}</em><br>
+      ${e.details}
+    `;
+    c.appendChild(d);
+  });
+}
+
+/* =========================================================
+   RESEARCH
+   ========================================================= */
+function renderResearch(arr = []) {
+  const c = $("research");
+  if (!c) return;
+
+  arr.forEach(r => {
+    const d = document.createElement("div");
+    d.className = "item";
+    d.innerHTML = `
+      <strong>${r.title}</strong>
+      <ul>${r.details.map(x => `<li>${x}</li>`).join("")}</ul>
+    `;
+    c.appendChild(d);
+  });
+}
+
+/* =========================================================
+   PROJECTS
+   ========================================================= */
+function renderProjects(arr = []) {
+  const c = $("projects");
+  if (!c) return;
+
+  arr.forEach(p => {
+    const d = document.createElement("div");
+    d.className = "item";
+    d.innerHTML = `
+      <strong>${p.title}</strong>
+      <ul>${p.details.map(x => `<li>${x}</li>`).join("")}</ul>
+    `;
+    c.appendChild(d);
+  });
+}
+
+/* =========================================================
+   TEACHING
+   ========================================================= */
+function renderTeaching(arr = []) {
+  const c = $("teaching");
+  if (!c) return;
+
+  arr.forEach(t => {
+    const d = document.createElement("div");
+    d.className = "item";
+    d.textContent = "• " + t;
+    c.appendChild(d);
+  });
+}
+
+/* =========================================================
+   ACHIEVEMENTS
+   ========================================================= */
+function renderAchievements(arr = []) {
+  const c = $("achievements");
+  if (!c) return;
+
+  arr.forEach(a => {
+    const d = document.createElement("div");
+    d.className = "item";
+    d.textContent = "• " + a;
+    c.appendChild(d);
+  });
+}
+
+/* =========================================================
+   TALKS
+   ========================================================= */
+function renderTalks(arr = []) {
+  const c = $("talks_and_presentations");
+  if (!c) return;
+
+  arr.forEach(t => {
+    const d = document.createElement("div");
+    d.className = "item";
+    d.textContent = "• " + t;
+    c.appendChild(d);
+  });
+}
+
+/* =========================================================
+   ACTIVITIES
+   ========================================================= */
+function renderActivities(arr = []) {
+  const c = $("activities");
+  if (!c) return;
+
+  arr.forEach(a => {
+    const d = document.createElement("div");
+    d.className = "item";
+    d.textContent = "• " + a;
+    c.appendChild(d);
   });
 }
 
@@ -122,14 +225,14 @@ function renderList(section, arr = []) {
    SKILLS
    ========================================================= */
 function renderSkills(arr = []) {
-  const container = el("#technical_skills") || el("#skills");
-  if (!container) return;
+  const c = $("technical_skills");
+  if (!c) return;
 
-  arr.forEach(skill => {
-    const s = document.createElement("span");
-    s.className = "skill";
-    s.textContent = skill;
-    container.appendChild(s);
+  arr.forEach(s => {
+    const span = document.createElement("span");
+    span.className = "skill";
+    span.textContent = s;
+    c.appendChild(span);
   });
 }
 
@@ -137,14 +240,15 @@ function renderSkills(arr = []) {
    REFERENCES
    ========================================================= */
 function renderReferences(arr = []) {
-  const c = el("#references");
+  const c = $("references");
   if (!c) return;
 
   arr.forEach(r => {
     const d = document.createElement("div");
     d.className = "ref";
     d.innerHTML = `
-      <strong>${r.name}</strong>, ${r.designation}, ${r.institution}<br>
+      <strong>${r.name}</strong>, ${r.designation}<br>
+      ${r.institution}<br>
       ${r.email}
     `;
     c.appendChild(d);
@@ -152,48 +256,46 @@ function renderReferences(arr = []) {
 }
 
 /* =========================================================
-   ENHANCEMENTS (BEAUTIFUL BUT SAFE)
+   UI ENHANCEMENTS (SAFE)
    ========================================================= */
 function enhanceUI() {
   announcementCarousel();
   scrollReveal();
 }
 
-/* ---- Announcement flashing / rotation ---- */
 function announcementCarousel() {
   const items = document.querySelectorAll(".announce");
   if (!items.length) return;
-
-  let index = 0;
-  items.forEach((el, i) => el.style.display = i === 0 ? "block" : "none");
-
+  let i = 0;
+  items.forEach((x, idx) => x.style.display = idx === 0 ? "block" : "none");
   setInterval(() => {
-    items[index].style.display = "none";
-    index = (index + 1) % items.length;
-    items[index].style.display = "block";
+    items[i].style.display = "none";
+    i = (i + 1) % items.length;
+    items[i].style.display = "block";
   }, 4000);
 }
 
-/* ---- Scroll reveal animation ---- */
 function scrollReveal() {
-  const targets = document.querySelectorAll(
-    ".announce, .pub-item, .item, .skill, .ref"
+  const els = document.querySelectorAll(".item, .pub-item, .announce, .skill, .ref");
+  const obs = new IntersectionObserver(e =>
+    e.forEach(x => x.isIntersecting && x.target.classList.add("visible")),
+    { threshold: 0.15 }
   );
-  if (!targets.length) return;
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
-
-  targets.forEach(el => {
+  els.forEach(el => {
     el.classList.add("reveal");
-    observer.observe(el);
+    obs.observe(el);
   });
+}
+
+/* =========================================================
+   FATAL ERROR UI
+   ========================================================= */
+function showFatalError(msg) {
+  const d = document.createElement("div");
+  d.style.background = "#fee2e2";
+  d.style.padding = "12px";
+  d.style.margin = "20px";
+  d.style.border = "1px solid #fca5a5";
+  d.textContent = "Site failed to load: " + msg;
+  document.body.prepend(d);
 }
