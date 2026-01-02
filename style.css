@@ -1,10 +1,9 @@
 /* =========================================================
-   DESIGN SYSTEM VARIABLES
+   VARIABLES
    ========================================================= */
 
 :root {
   --primary: #0b3c5d;
-  --accent: #2563eb;
   --text: #1f1f1f;
   --muted: #6b7280;
   --border: #e2e2e2;
@@ -12,7 +11,7 @@
 }
 
 /* =========================================================
-   GLOBAL RESET
+   RESET
    ========================================================= */
 
 *,
@@ -25,26 +24,20 @@ html {
   scroll-behavior: smooth;
 }
 
-/* =========================================================
-   BODY & CENTERING
-   ========================================================= */
-
 body {
   margin: 0;
-  padding: 0;
-
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: Georgia, "Times New Roman", serif;
   color: var(--text);
   background: #ffffff;
-
-  /* HARD CENTERING — no left drift possible */
-  display: flex;
-  justify-content: center;
 }
 
+/* =========================================================
+   PAGE CONTAINER (CENTERING FIX)
+   ========================================================= */
+
 .site-wrapper {
-  width: 100%;
   max-width: 1150px;
+  margin: 0 auto;
   padding: 42px 36px 64px;
 }
 
@@ -52,7 +45,7 @@ body {
    PROFILE HEADER
    ========================================================= */
 
-.site-header {
+#profile-header {
   margin-bottom: 40px;
 }
 
@@ -65,46 +58,37 @@ body {
 
 .profile-header img {
   width: 170px;
-  height: auto;
   border-radius: 6px;
   border: 1px solid var(--border);
-  background: #ffffff;
 }
 
 .profile-text h1 {
   margin: 0;
   font-size: 2.4rem;
   font-weight: normal;
-  letter-spacing: 0.3px;
 }
 
 .profile-text .title {
   margin-top: 6px;
-  font-size: 1.05rem;
   font-weight: 600;
   color: var(--primary);
 }
 
-.profile-text .affiliation {
-  margin-top: 6px;
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-
+.profile-text .affiliation,
 .profile-text .email {
-  margin-top: 10px;
-  font-size: 0.9rem;
+  margin-top: 6px;
   color: var(--muted);
+  font-size: 0.95rem;
 }
 
 /* =========================================================
-   TOP NAVIGATION
+   NAVIGATION
    ========================================================= */
 
 .top-nav {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 10;
 
   display: flex;
   flex-wrap: wrap;
@@ -118,27 +102,13 @@ body {
 }
 
 .top-nav a {
-  position: relative;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
   color: var(--primary);
 }
 
-.top-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0%;
-  height: 2px;
-  background: var(--primary);
-  transition: width 0.2s ease;
-}
-
-.top-nav a:hover::after,
-.top-nav a.active::after {
-  width: 100%;
+.top-nav a.active {
+  text-decoration: underline;
 }
 
 /* =========================================================
@@ -149,15 +119,10 @@ body {
   margin-bottom: 60px;
 }
 
-.announcements-section h2 {
-  margin-bottom: 14px;
-}
-
 .announcement-ticker {
   background: var(--light-bg);
   border-left: 4px solid var(--primary);
   padding: 14px 18px;
-  min-height: 42px;
 }
 
 .announcement-ticker p {
@@ -175,7 +140,6 @@ body {
 
 .main-content h2 {
   font-size: 1.55rem;
-  font-weight: normal;
   margin-bottom: 18px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border);
@@ -185,8 +149,6 @@ body {
 .main-content h3 {
   margin-top: 30px;
   margin-bottom: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
 }
 
 .main-content p {
@@ -196,7 +158,6 @@ body {
 
 .main-content ul {
   padding-left: 24px;
-  margin-bottom: 16px;
 }
 
 .main-content li {
@@ -204,23 +165,11 @@ body {
 }
 
 /* =========================================================
-   CONTENT BLOCKS (JS GENERATED)
+   JS GENERATED BLOCKS
    ========================================================= */
 
 .block {
   margin-bottom: 18px;
-}
-
-/* =========================================================
-   PUBLICATIONS
-   ========================================================= */
-
-.main-content p em {
-  font-style: italic;
-}
-
-.main-content p strong {
-  font-weight: 600;
 }
 
 /* =========================================================
@@ -237,38 +186,24 @@ body {
 }
 
 /* =========================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE
    ========================================================= */
 
 @media (max-width: 900px) {
   .profile-header {
     grid-template-columns: 1fr;
-    gap: 22px;
   }
 
   .profile-header img {
     width: 140px;
   }
-
-  .top-nav {
-    gap: 12px;
-  }
-
-  .main-content p {
-    max-width: 100%;
-  }
 }
 
 /* =========================================================
-   PRINT MODE (ACADEMIC FRIENDLY)
+   PRINT
    ========================================================= */
 
 @media print {
-  body {
-    display: block;
-    font-size: 11pt;
-  }
-
   .top-nav,
   .announcements-section {
     display: none;
@@ -276,9 +211,5 @@ body {
 
   .site-wrapper {
     padding: 0;
-  }
-
-  a::after {
-    display: none;
   }
 }
