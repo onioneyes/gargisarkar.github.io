@@ -1,16 +1,19 @@
 /* =========================================================
-   GLOBAL RESET & VARIABLES
+   DESIGN SYSTEM VARIABLES
    ========================================================= */
 
 :root {
-  --primary: #0b3c5d;        /* deep academic blue */
-  --secondary: #555;
-  --light-bg: #f9fafb;
-  --border: #e2e2e2;
+  --primary: #0b3c5d;
+  --accent: #2563eb;
   --text: #1f1f1f;
   --muted: #6b7280;
-  --accent: #2563eb;
+  --border: #e2e2e2;
+  --light-bg: #f9fafb;
 }
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
 
 *,
 *::before,
@@ -18,18 +21,23 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* =========================================================
-   BODY & PAGE CENTERING
+   BODY & CENTERING
    ========================================================= */
 
 body {
   margin: 0;
   padding: 0;
+
   font-family: "Georgia", "Times New Roman", serif;
   color: var(--text);
   background: #ffffff;
 
-  /* hard centering */
+  /* HARD CENTERING — no left drift possible */
   display: flex;
   justify-content: center;
 }
@@ -37,7 +45,7 @@ body {
 .site-wrapper {
   width: 100%;
   max-width: 1150px;
-  padding: 40px 36px 60px;
+  padding: 42px 36px 64px;
 }
 
 /* =========================================================
@@ -45,7 +53,7 @@ body {
    ========================================================= */
 
 .site-header {
-  margin-bottom: 36px;
+  margin-bottom: 40px;
 }
 
 .profile-header {
@@ -60,7 +68,7 @@ body {
   height: auto;
   border-radius: 6px;
   border: 1px solid var(--border);
-  background: #fff;
+  background: #ffffff;
 }
 
 .profile-text h1 {
@@ -72,15 +80,15 @@ body {
 
 .profile-text .title {
   margin-top: 6px;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--primary);
-  font-size: 1.05rem;
 }
 
 .profile-text .affiliation {
   margin-top: 6px;
   font-size: 0.95rem;
-  color: var(--secondary);
+  color: var(--muted);
 }
 
 .profile-text .email {
@@ -96,25 +104,25 @@ body {
 .top-nav {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
 
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
 
   padding: 14px 0;
-  margin-bottom: 48px;
+  margin-bottom: 52px;
 
   background: #ffffff;
   border-bottom: 1px solid var(--border);
 }
 
 .top-nav a {
+  position: relative;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--primary);
-  position: relative;
 }
 
 .top-nav a::after {
@@ -138,11 +146,11 @@ body {
    ========================================================= */
 
 .announcements-section {
-  margin-bottom: 56px;
+  margin-bottom: 60px;
 }
 
 .announcements-section h2 {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .announcement-ticker {
@@ -162,7 +170,7 @@ body {
    ========================================================= */
 
 .main-content section {
-  margin-bottom: 64px;
+  margin-bottom: 68px;
 }
 
 .main-content h2 {
@@ -175,7 +183,7 @@ body {
 }
 
 .main-content h3 {
-  margin-top: 28px;
+  margin-top: 30px;
   margin-bottom: 8px;
   font-size: 1.1rem;
   font-weight: 600;
@@ -196,16 +204,15 @@ body {
 }
 
 /* =========================================================
-   CONTENT BLOCKS (used by JS)
+   CONTENT BLOCKS (JS GENERATED)
    ========================================================= */
 
 .block {
-  padding-left: 2px;
   margin-bottom: 18px;
 }
 
 /* =========================================================
-   PUBLICATION STYLING
+   PUBLICATIONS
    ========================================================= */
 
 .main-content p em {
@@ -221,8 +228,8 @@ body {
    ========================================================= */
 
 .site-footer {
-  margin-top: 80px;
-  padding-top: 22px;
+  margin-top: 90px;
+  padding-top: 24px;
   border-top: 1px solid var(--border);
   text-align: center;
   font-size: 0.85rem;
@@ -236,7 +243,7 @@ body {
 @media (max-width: 900px) {
   .profile-header {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 22px;
   }
 
   .profile-header img {
