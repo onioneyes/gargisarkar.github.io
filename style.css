@@ -1,155 +1,283 @@
+/* =========================================================
+   ROOT VARIABLES — visual consistency only
+   ========================================================= */
+
 :root {
   --primary: #0b3c5d;
+  --accent: #0266c8;
   --text: #1f1f1f;
   --muted: #6b7280;
   --border: #e2e2e2;
-  --light-bg: #f9fafb;
+  --bg-light: #f7f9fc;
 }
 
-/* RESET */
-* {
+/* =========================================================
+   GLOBAL RESET — NOTHING HIDES CONTENT
+   ========================================================= */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  padding: 0;
+
   font-family: Georgia, "Times New Roman", serif;
   color: var(--text);
   background: #ffffff;
+
+  /* CRITICAL: do NOT use flex/grid here */
+  display: block;
 }
 
-/* CENTERED WRAPPER */
-.site-wrapper {
-  max-width: 1150px;
-  margin: 0 auto;
-  padding: 42px 36px 64px;
-}
+/* =========================================================
+   NAVIGATION (STATIC, SAFE)
+   ========================================================= */
 
-/* HEADER */
-#profile-header {
-  margin-bottom: 40px;
-}
-
-.profile-header {
-  display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 32px;
-  align-items: center;
-}
-
-.profile-header img {
-  width: 170px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-}
-
-.profile-text h1 {
-  margin: 0;
-  font-size: 2.4rem;
-  font-weight: normal;
-}
-
-.profile-text .title {
-  margin-top: 6px;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-.profile-text .affiliation,
-.profile-text .email {
-  margin-top: 6px;
-  color: var(--muted);
-}
-
-/* NAV */
-.top-nav {
+header {
   position: sticky;
   top: 0;
+  z-index: 100;
+
   background: #ffffff;
   border-bottom: 1px solid var(--border);
-  padding: 14px 0;
-  margin-bottom: 52px;
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
 }
 
-.top-nav a {
+nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 24px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+nav a {
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.95rem;
   color: var(--primary);
 }
 
-.top-nav a.active {
+nav a:hover {
   text-decoration: underline;
 }
 
-/* ANNOUNCEMENTS */
-.announcements-section {
-  margin-bottom: 60px;
+/* =========================================================
+   PROFILE / HERO
+   ========================================================= */
+
+#hero {
+  max-width: 900px;
+  margin: 48px auto 64px;
+  padding: 0 24px;
+
+  text-align: center;
 }
 
-.announcement-ticker {
-  background: var(--light-bg);
-  border-left: 4px solid var(--primary);
-  padding: 14px 18px;
+#hero img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  margin-bottom: 16px;
 }
 
-.announcement-ticker p {
+#hero h1 {
   margin: 0;
-}
-
-/* MAIN CONTENT */
-.main-content section {
-  margin-bottom: 68px;
-}
-
-.main-content h2 {
-  font-size: 1.55rem;
-  margin-bottom: 18px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
+  font-size: 2.4rem;
+  font-weight: normal;
   color: var(--primary);
 }
 
-.block {
-  margin-bottom: 18px;
+#hero p {
+  margin-top: 6px;
+  font-size: 1.05rem;
+  color: var(--muted);
 }
 
-.main-content p {
-  margin-bottom: 14px;
-  max-width: 90ch;
+#hero .links {
+  margin-top: 12px;
+  font-size: 0.95rem;
 }
 
-/* FOOTER */
-.site-footer {
-  margin-top: 90px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-  text-align: center;
+/* =========================================================
+   SECTION BASE — THIS IS THE MOST IMPORTANT PART
+   NOTHING HIDES SECTIONS
+   ========================================================= */
+
+section {
+  display: block;
+  visibility: visible;
+  height: auto;
+  overflow: visible;
+
+  max-width: 1000px;
+  margin: 64px auto;
+  padding: 0 24px;
+}
+
+/* =========================================================
+   SECTION HEADINGS — VISUAL ANCHORS
+   ========================================================= */
+
+section h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--accent);
+
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+/* =========================================================
+   ANNOUNCEMENTS — ONLY PLACE WITH VISUAL EMPHASIS
+   ========================================================= */
+
+#announcements {
+  background: var(--bg-light);
+  padding: 32px 24px;
+}
+
+.announce {
+  display: none; /* controlled ONLY by JS carousel */
+  background: #ffffff;
+  border-left: 4px solid var(--accent);
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+
+.announce h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.announce small {
+  display: block;
+  margin-top: 4px;
   font-size: 0.85rem;
   color: var(--muted);
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .profile-header {
-    grid-template-columns: 1fr;
+.announce p {
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   PUBLICATIONS
+   ========================================================= */
+
+.pub-item {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.pub-item h5 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.pub-item p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   EXPERIENCE & EDUCATION
+   ========================================================= */
+
+.exp-item,
+.edu-item {
+  border: 1px solid var(--border);
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.exp-item h5,
+.edu-item h5 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.exp-item small,
+.edu-item small {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.exp-item p {
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   SKILLS
+   ========================================================= */
+
+#skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill {
+  background: var(--accent);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   RESPONSIVE — SAFE, NO HIDING
+   ========================================================= */
+
+@media (max-width: 768px) {
+  nav {
+    gap: 12px;
   }
 
-  .profile-header img {
-    width: 140px;
+  section {
+    margin: 48px auto;
+  }
+
+  #hero h1 {
+    font-size: 2rem;
   }
 }
 
-/* PRINT */
+/* =========================================================
+   PRINT — ACADEMIC SAFE
+   ========================================================= */
+
 @media print {
-  .top-nav,
-  .announcements-section {
+  header {
     display: none;
   }
 
-  .site-wrapper {
+  section {
+    margin: 24px 0;
     padding: 0;
   }
 }
