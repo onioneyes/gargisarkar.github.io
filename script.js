@@ -107,3 +107,4 @@ function startAnnouncementCarousel() {
 /* Call AFTER announcements are rendered */
 setTimeout(startAnnouncementCarousel, 500);
 
+
