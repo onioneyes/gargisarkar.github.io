@@ -303,6 +303,10 @@ function renderActivities(arr = []) {
 
 
 function renderSkills(skills = {}) {
+/* =========================================================
+   SKILLS (CATEGORISED, ACADEMIC)
+   ========================================================= */
+function renderSkills(skills = {}) {
   const c = $("technical_skills");
   if (!c || typeof skills !== "object") return;
 
@@ -310,8 +314,12 @@ function renderSkills(skills = {}) {
     const block = document.createElement("div");
     block.className = "item";
 
-    block.innerHTML = `<strong>${category}</strong>`;
+    // Category heading
+    const h = document.createElement("strong");
+    h.textContent = category;
+    block.appendChild(h);
 
+    // Skill list
     const ul = document.createElement("ul");
 
     items.forEach(skill => {
@@ -324,6 +332,7 @@ function renderSkills(skills = {}) {
     c.appendChild(block);
   });
 }
+
 
 /* =========================================================
    REFERENCES
