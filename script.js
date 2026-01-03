@@ -40,8 +40,6 @@ function renderAbout(a) {
   $("name").textContent = a.name;
   $("title").textContent = a.title;
   $("photo").src = a.photo?.src || "";
-  $("email").textContent = a.email;
-  $("email").href = `mailto:${a.email}`;
 
   $("affiliation-line").innerHTML = `
     🎓 Ph.D. in Computer Science and Engineering from
