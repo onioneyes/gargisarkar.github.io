@@ -193,8 +193,8 @@ function renderPublications(pubs) {
 
   const sections = {
     published: "Journal Articles (Published)",
-    under_review: "Manuscripts Under Review",
     preprint: "Preprints / Archived Manuscripts",
+   under_review: "Manuscripts Under Review",
     conference: "Conference Proceedings"
   };
 
