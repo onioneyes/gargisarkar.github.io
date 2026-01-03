@@ -317,9 +317,17 @@ section h2 {
    TEACHING – ACADEMIC TIMELINE (DOWN → UP)
    ===================================================== */
 
+/* --- Tunable academic constants --- */
+:root {
+  --timeline-x: 12px;      /* x-position of timeline spine */
+  --node-size: 10px;       /* default node diameter */
+  --node-size-lg: 14px;    /* current / most recent role */
+}
+
+/* Teaching section container */
 #teaching {
   position: relative;
-  padding-left: 36px;        /* space for timeline */
+  padding-left: 40px;      /* space reserved for timeline */
 }
 
 /* Section heading spacing */
@@ -327,23 +335,23 @@ section h2 {
   margin-bottom: 18px;
 }
 
-/* Timeline vertical spine */
+/* Timeline vertical spine (starts below heading) */
 #teaching::before {
   content: "";
   position: absolute;
-  left: 10px;
-  top: 56px;                /* STARTS BELOW HEADING */
+  left: var(--timeline-x);
+  top: 56px;               /* STARTS BELOW HEADING */
   bottom: 0;
   width: 2px;
   background: var(--muted);
 }
 
-/* Upward arrow (flow indicator) */
+/* Upward arrow (flow indicator: past → present) */
 #teaching::after {
   content: "";
   position: absolute;
-  left: 4px;
-  top: 48px;                /* ENDS BEFORE HEADING */
+  left: calc(var(--timeline-x) - 6px);
+  top: 48px;               /* ENDS BEFORE HEADING */
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
@@ -358,40 +366,38 @@ section h2 {
   padding-left: 8px;
 }
 
-/* Timeline node (dot) */
+/* Timeline node (perfectly centered on spine) */
 .teaching-item::before {
   content: "";
   position: absolute;
-  left: -26px;              /* aligned on spine */
+  left: calc(var(--timeline-x) * -1 - var(--node-size) / 2 + 1px);
   top: 6px;
-  width: 10px;
-  height: 10px;
+  width: var(--node-size);
+  height: var(--node-size);
   background: var(--text);
   border-radius: 50%;
   z-index: 2;
 }
 
-/* Highlight most recent role (top item) */
+/* Highlight most recent role (top entry) */
 .teaching-item:first-child::before {
-  width: 14px;
-  height: 14px;
-  left: -28px;
-  background: var(--text);
+  width: var(--node-size-lg);
+  height: var(--node-size-lg);
+  left: calc(var(--timeline-x) * -1 - var(--node-size-lg) / 2 + 1px);
 }
 
-/* Teaching role title */
-/* Teaching header */
+/* Teaching role + institution header */
 .teaching-header {
-  display: block;          /* you wanted block */
+  display: block;          /* block-level as requested */
   font-weight: 500;
   margin-bottom: 6px;
+  line-height: 1.35;
 }
 
 /* Role emphasis */
 .teaching-header strong {
-  font-weight: 600;        /* inline by default */
+  font-weight: 600;        /* stays inline */
 }
-
 
 /* Course list */
 .teaching-item ul {
@@ -411,7 +417,7 @@ section h2 {
   font-weight: 600;
 }
 
-/* Subtle academic refinement */
+/* Print-safe academic rendering */
 @media print {
   #teaching::before,
   #teaching::after {
@@ -422,6 +428,7 @@ section h2 {
     background: #000;
   }
 }
+
 
 
 /* =====================================================
