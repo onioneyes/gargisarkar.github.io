@@ -88,28 +88,6 @@ function renderAnnouncements(pubs) {
       c.appendChild(d);
     });
 }
-
-/* =========================================================
-   PUBLICATIONS
-   ========================================================= */
-function renderPublications(pubs) {
-  const c = $("publications");
-  if (!c || !pubs) return;
-
-  ["journals", "conference_proceedings"].forEach(type => {
-    (pubs[type] || []).forEach(p => {
-      const d = document.createElement("div");
-      d.className = "pub-item";
-      d.innerHTML = `
-        <strong>${p.title}</strong><br>
-        ${p.authors.join(", ")}<br>
-        <em>${p.venue} (${p.year})</em>
-      `;
-      c.appendChild(d);
-    });
-  });
-}
-
 /* =========================================================
    EXPERIENCE
    ========================================================= */
@@ -147,6 +125,28 @@ function renderEducation(arr = []) {
     c.appendChild(d);
   });
 }
+
+/* =========================================================
+   PUBLICATIONS
+   ========================================================= */
+function renderPublications(pubs) {
+  const c = $("publications");
+  if (!c || !pubs) return;
+
+  ["journals", "conference_proceedings"].forEach(type => {
+    (pubs[type] || []).forEach(p => {
+      const d = document.createElement("div");
+      d.className = "pub-item";
+      d.innerHTML = `
+        <strong>${p.title}</strong><br>
+        ${p.authors.join(", ")}<br>
+        <em>${p.venue} (${p.year})</em>
+      `;
+      c.appendChild(d);
+    });
+  });
+}
+
 
 /* =========================================================
    RESEARCH
