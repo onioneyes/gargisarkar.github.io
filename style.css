@@ -183,6 +183,22 @@ section h2 {
   margin-bottom: 26px;
 }
 
+/* ================= ABOUT SUMMARY ================= */
+
+#about-summary {
+  margin-top: 1.2rem;
+  max-width: 720px;
+}
+
+#about-summary p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #333;
+  text-align: justify;
+  margin-bottom: 0.8rem;
+}
+
+
 /* =====================================================
    ANNOUNCEMENTS
    ===================================================== */
