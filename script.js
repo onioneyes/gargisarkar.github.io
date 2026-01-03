@@ -301,8 +301,6 @@ function renderActivities(arr = []) {
   });
 }
 
-
-function renderSkills(skills = {}) {
 /* =========================================================
    SKILLS (CATEGORISED, ACADEMIC)
    ========================================================= */
