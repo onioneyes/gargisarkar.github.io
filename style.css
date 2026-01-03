@@ -333,7 +333,7 @@ section h2 {
 .teaching-item::before {
   content: "";
   position: absolute;
-  left: 2px;
+  left: -1px;
   top: 6px;
 
   width: 10px;
@@ -355,7 +355,7 @@ section h2 {
 .teaching-item::after {
   content: "";
   position: absolute;
-  left: 2px;
+  left: -1px;
   top: 16px;                 /* inside node */
   width: 2px;
   height: calc(100% + 12px);
@@ -371,7 +371,7 @@ section h2 {
 #teaching::before {
   content: "";
   position: absolute;
-  left: 18px;
+  left: -1px;
   top: 0;
 
   width: 0;
