@@ -322,10 +322,10 @@ section h2 {
    LOCAL CONSTANTS
    ========================= */
 :root {
-  --timeline-x: 22px;     /* distance from content edge */
+  --timeline-x: -2px;     /* distance from content edge */
   --node-sm: 8px;
   --node-lg: 12px;
-  --line-w: 2px;
+  --line-w: -1px;
 }
 
 /* =========================
@@ -393,7 +393,7 @@ section h2 {
    TOP ARROW (LINE TERMINUS)
    ========================= */
 .teaching-item:first-child::after {
-  height: calc(100% + 14px);
+  height: calc(100% + 0px);
 }
 
 #teaching::before {
@@ -429,13 +429,13 @@ section h2 {
    LIST
    ========================= */
 .teaching-item ul {
-  margin: 4px 0 0;
+  margin: 6px 0 0;
   padding-left: 18px;
 }
 
 .teaching-item li {
   font-size: 0.93rem;
-  line-height: 1.45;
+  line-height: 1.65;
   color: var(--text);
   margin-bottom: 4px;
 }
