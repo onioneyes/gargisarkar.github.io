@@ -17,11 +17,8 @@
   ],
 
   "about": {
-    "name": "Gargi Sarkar",
-    "title": "Research Scientist",
-    "affiliation": [
-      "International Institute of Information Technology Hyderabad",
-    ],
+    "name": "Dr. Gargi Sarkar",
+    "affiliation": "International Institute of Information Technology Hyderabad",
     "email": "gsarkar@cse.iitk.ac.in",
     "photo": {
       "src": "images/picture.jpeg",
