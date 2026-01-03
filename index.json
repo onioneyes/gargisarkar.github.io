@@ -18,7 +18,7 @@
 
   "about": {
     "name": "Dr. Gargi Sarkar",
-    "affiliation": "International Institute of Information Technology Hyderabad",
+    "affiliation": "International Institute of Information Technology (IIIT) Hyderabad",
     "email": "gsarkar@cse.iitk.ac.in",
     "photo": {
       "src": "images/picture.jpeg",
@@ -28,16 +28,17 @@
 
   "summary": {
     "points": [
-      "As a researcher at the intersection of computer security and criminology, I investigate cybercrimes targeting everyday individuals.",
-      "My work aims to develop efficient and systematic policing procedures to combat these crimes.",
-      "I have been actively involved in mitigating and synthesizing solutions for cyber-enabled human trafficking and forced criminality affecting victims of trafficking.",
-      "Currently, I am developing standard operating procedures for police to systematically investigate digital artifacts involved in cybercrimes, incorporating open-source intelligence, and fostering private-government collaboration."
+      "As a researcher at the intersection of computer security and criminology, I investigate cybercrimes targeting everyday individuals. 
+    My work aims to develop efficient and systematic policing procedures to combat these crimes. 
+      I have been actively involved in mitigating and synthesizing solutions for cyber-enabled human trafficking and forced criminality 
+    affecting victims of trafficking. Currently, I am developing standard operating procedures for police to systematically 
+    investigate digital artifacts involved in cybercrimes, incorporating open-source intelligence, and fostering private-government collaboration."
     ]
   },
 
   "experience": [
     {
-      "institution": "International Institute of Information Technology Hyderabad",
+      "institution": "International Institute of Information Technology (IIIT) Hyderabad",
       "location": "Hyderabad, India",
       "role": "Post-PhD Research Scientist",
       "period": "August 2025 – Present",
