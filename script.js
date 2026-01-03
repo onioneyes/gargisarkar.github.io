@@ -185,7 +185,7 @@ function renderEducation(arr = []) {
 }
 
 /* =========================================================
-   PUBLICATIONS – FINAL VERSION
+   PUBLICATIONS – WORKING VERSION
    ========================================================= */
 function renderPublications(pubs) {
   const publications = $("publications");
@@ -193,8 +193,8 @@ function renderPublications(pubs) {
 
   const sections = {
     published: "Journal Articles (Published)",
+    under_review: "Manuscripts Under Review",
     preprint: "Preprints / Archived Manuscripts",
-   under_review: "Manuscripts Under Review",
     conference: "Conference Proceedings"
   };
 
@@ -211,54 +211,42 @@ function renderPublications(pubs) {
 
       const accessLink = getAccessLink(p);
       const bibtex = generateBibTeX(p);
-      const citeId = `bib-${title.replace(/\s+/g, "")}-${idx}`;
-
-      let links = "";
-      if (accessLink || bibtex) {
-        links = `<div class="pub-links">`;
-        if (accessLink) {
-          links += `<a href="${accessLink}" target="_blank" rel="noopener">Access</a>`;
-        }
-        if (bibtex) {
-          links += `<a onclick="toggleBibTeX('${citeId}')">Cite</a>`;
-        }
-        links += `</div>`;
-      }
+      const citeId = `bibtex-${Date.now()}-${idx}`; // SAFE ID
 
       d.innerHTML = `
         <strong>${p.title}</strong><br>
         ${p.authors.join(", ")}<br>
         <em>${p.venue} (${p.year})</em>
-        ${links}
-        ${bibtex ? `<pre id="${citeId}" class="bibtex" style="display:none;">${bibtex}</pre>` : ""}
+        <div class="pub-links">
+          ${accessLink ? `<a href="${accessLink}" target="_blank">Access</a>` : ""}
+          ${bibtex ? `<a href="#" class="cite-btn">Cite</a>` : ""}
+        </div>
+        ${bibtex ? `<pre id="${citeId}" class="bibtex" hidden>${bibtex}</pre>` : ""}
       `;
 
       publications.appendChild(d);
+
+      /* ---- Attach Cite toggle safely ---- */
+      if (bibtex) {
+        const citeBtn = d.querySelector(".cite-btn");
+        const bibEl = d.querySelector(`#${citeId}`);
+
+        citeBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          bibEl.hidden = !bibEl.hidden;
+        });
+      }
     });
   }
 
   const journals = pubs.journals || [];
 
-  renderSection(
-    sections.published,
-    journals.filter(p => p.status === "published")
-  );
-
-  renderSection(
-    sections.under_review,
-    journals.filter(p => p.status === "under_review")
-  );
-
-  renderSection(
-    sections.preprint,
-    journals.filter(p => p.status === "preprint")
-  );
-
-  renderSection(
-    sections.conference,
-    pubs.conference_proceedings || []
-  );
+  renderSection(sections.published, journals.filter(p => p.status === "published"));
+  renderSection(sections.under_review, journals.filter(p => p.status === "under_review"));
+  renderSection(sections.preprint, journals.filter(p => p.status === "preprint"));
+  renderSection(sections.conference, pubs.conference_proceedings || []);
 }
+
 
 
 /* =========================================================
