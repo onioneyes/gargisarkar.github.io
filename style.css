@@ -317,9 +317,13 @@ section h2 {
    SKILLS (PROFESSIONAL / ACADEMIC)
    ===================================================== */
 
+/* =====================================================
+   SKILLS (PROFESSIONAL / ACADEMIC)
+   ===================================================== */
+
 .skills-grid {
   display: grid;
- grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);   /* FIXED 2 COLUMNS */
   gap: 8px 24px;
 
   margin: 0;
@@ -341,6 +345,7 @@ section h2 {
   left: 0;
   color: var(--muted);
 }
+
 
 
 /* =====================================================
