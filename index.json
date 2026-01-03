@@ -317,15 +317,30 @@
     "Presented Cybercrime Navigator at DST TIPS Workshop"
   ],
 
-  "technical_skills": [
-    "MATLAB",
-    "C",
+"technical_skills": {
+  "Programming & Tools": [
     "Python",
-    "HTML",
-    "CSS",
+    "C",
+    "MATLAB",
+    "HTML/CSS",
     "LaTeX",
     "Markdown"
   ],
+  "Cybersecurity & Digital Forensics": [
+    "Cybercrime Investigation",
+    "Digital Evidence Analysis",
+    "OSINT Techniques",
+    "Dark Web Analysis (Tor)",
+    "Scam and Fraud Lifecycle Analysis",
+    "CERT-In Compliance and Audit Understanding"
+  ],
+  "AI & Data Analysis": [
+    "Large Language Models (Applied)",
+    "Natural Language Processing for Fraud Analysis",
+    "Explainable AI",
+    "Behavioral and Tactical Modeling"
+  ]
+}
 
   "references": [
     {
