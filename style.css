@@ -280,34 +280,88 @@ section h2 {
 
 
 /* =====================================================
-   ANNOUNCEMENTS
+   ANNOUNCEMENTS – SINGLE BOX WITH FLOATING ITEMS
    ===================================================== */
 
+/* outer announcements box */
+#announcements {
+  position: relative;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 20px 16px 36px;
+  margin-top: 18px;
+}
 
-.announce {
+/* vertical timeline */
+#announcements::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: var(--border);
+}
+
+/* each announcement */
+.announce-item {
+  position: relative;
+  display: flex;
+  gap: 18px;
   margin-bottom: 18px;
 }
 
-.announce h3 {
-  margin: 0 0 4px 0;
-  font-size: 1rem;
+/* dot with icon */
+.announce-dot {
+  position: absolute;
+  left: 10px;
+  top: 18px;
+  width: 20px;
+  height: 20px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
-.announce small {
-  color: var(--muted);
-  font-size: 0.85rem;
+/* icon */
+.announce-icon {
+  font-size: 11px;
+  color: #ffffff;
 }
 
-.announce p {
-  margin: 6px 0 0;
+/* floating announcement card */
+.announce-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-left: 18px;
+  width: 100%;
+
+  /* floating effect */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* text */
+.announce-card h4 {
+  margin: 4px 0 6px;
   font-size: 0.95rem;
 }
 
-
-@keyframes fadeSlide {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+.announce-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text);
 }
+
+.announce-date {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
 
 /* =====================================================
    CONTENT CARDS
