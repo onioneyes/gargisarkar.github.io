@@ -314,22 +314,34 @@ section h2 {
 }
 
 /* =====================================================
-   SKILLS
+   SKILLS (PROFESSIONAL / ACADEMIC)
    ===================================================== */
-#technical_skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px 24px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.skill {
-  background: var(--accent);
-  color: #ffffff;
-  padding: 6px 12px;
-  border-radius: 16px;
-  font-size: 0.85rem;
-  font-weight: 600;
+.skills-grid li {
+  font-size: 0.95rem;
+  color: var(--text);
+  padding-left: 14px;
+  position: relative;
 }
+
+/* subtle bullet */
+.skills-grid li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+}
+
 
 /* =====================================================
    SCROLL REVEAL (JS)
