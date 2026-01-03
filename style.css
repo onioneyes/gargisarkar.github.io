@@ -111,19 +111,31 @@ body {
 }
 /* ================= FONT AWESOME ICON FIX ================= */
 
-/* Ensure icons are visible */
-.sidebar-block i {
-  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
-  font-style: normal;
-  font-weight: 400;
+/* ================= FONT AWESOME (CORRECT) ================= */
 
-  font-size: 1rem;
-  line-height: 1;
-  color: var(--accent);
-
-  display: inline-flex;
+.sidebar-block a {
+  display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
+
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 6px;
+}
+
+/* Icon sizing ONLY — no font-family override */
+.sidebar-block i {
+  font-size: 1rem;
+  width: 18px;
+  text-align: center;
+  color: var(--accent);
+}
+
+/* Solid icons need bold weight */
+.sidebar-block i.fa-solid {
+  font-weight: 900;
 }
 
 /* Brand icons need this */
@@ -135,6 +147,16 @@ body {
 .sidebar-block i.fa-solid {
   font-family: "Font Awesome 6 Free" !important;
   font-weight: 900;
+}
+.sidebar-block a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
 }
 
 
