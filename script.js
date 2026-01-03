@@ -41,13 +41,17 @@ function renderAbout(a) {
   $("name").textContent = a.name;
   $("photo").src = a.photo?.src || "";
 
-  $("affiliation-line").innerHTML = `
-    🎓 Ph.D. in Computer Science and Engineering from
-    <strong>Indian Institute of Technology Kanpur</strong>;
-    🏛️ currently a Research Scientist at
-    <strong>${a.affiliation}</strong>.
+  $("phd-line").innerHTML = `
+    🎓 Ph.D. in Computer Science and Engineering<br>
+    <strong>Indian Institute of Technology Kanpur</strong>
+  `;
+
+  $("current-line").innerHTML = `
+    🏛️ Currently a Research Scientist at<br>
+    <strong>${a.affiliation}</strong>
   `;
 }
+
 function renderSummary(summary) {
   if (!summary || !Array.isArray(summary.points)) return;
 
