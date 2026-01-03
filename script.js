@@ -123,28 +123,38 @@ function renderSummary(summary) {
 
 
 
+
 /* =========================================================
-   ANNOUNCEMENTS (derived from publications)
+   ANNOUNCEMENTS (MANUAL / CURATED)
    ========================================================= */
-function renderAnnouncements(pubs) {
+function renderAnnouncements(announcements) {
   const c = $("announcements");
-  if (!c || !pubs) return;
+  if (!c || !announcements || !announcements.length) return;
 
-  const all = [
-    ...(pubs.journals || []),
-    ...(pubs.conference_proceedings || [])
-  ];
-
-  all
-    .filter(p => typeof p.year === "number")
-    .sort((a, b) => b.year - a.year)
+  announcements
+    .slice()
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 5)
-    .forEach(p => {
+    .forEach(a => {
       const d = document.createElement("div");
       d.className = "announce";
-      d.innerHTML = `<h3>${p.title}</h3><small>${p.venue} (${p.year})</small>`;
+
+      d.innerHTML = `
+        <h3>${a.title}</h3>
+        <small>${formatAnnouncementDate(a.date)}</small>
+        <p>${a.description}</p>
+      `;
+
       c.appendChild(d);
     });
+}
+function formatAnnouncementDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  });
 }
 /* =========================================================
    EXPERIENCE
