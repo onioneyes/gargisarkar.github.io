@@ -224,6 +224,8 @@ nav a:hover {
   text-decoration: none;
 }
 
+
+
 /* =====================================================
    SECTIONS
    ===================================================== */
@@ -280,19 +282,27 @@ section h2 {
 /* =====================================================
    ANNOUNCEMENTS
    ===================================================== */
-#announcements {
-  background: var(--bg-light);
-  padding: 40px 24px;
-}
+
 
 .announce {
-  display: none;
-  background: #ffffff;
-  border-left: 4px solid var(--accent);
-  padding: 16px 18px;
-  margin-bottom: 12px;
-  animation: fadeSlide 0.6s ease;
+  margin-bottom: 18px;
 }
+
+.announce h3 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+}
+
+.announce small {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.announce p {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+}
+
 
 @keyframes fadeSlide {
   from { opacity: 0; transform: translateY(8px); }
