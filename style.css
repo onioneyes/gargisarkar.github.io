@@ -315,31 +315,24 @@ section h2 {
 
 /* =====================================================
    TEACHING – ACADEMIC TIMELINE
-   Direction: DOWN → UP (Arrow at top)
-   HSS-aligned, restrained, print-safe
+   HSS-aligned, DOWN → UP, centered arrow
    ===================================================== */
 
 /* =========================
    LOCAL CONSTANTS
    ========================= */
 :root {
-  --timeline-x: 14px;
-  --node-sm: 7px;
-  --node-lg: 11px;
+  --timeline-x: 22px;     /* distance from content edge */
+  --node-sm: 8px;
+  --node-lg: 12px;
   --line-w: 2px;
-  --node-offset: 6px;
 }
 
 /* =========================
-   SECTION WRAPPER
+   SECTION (NO SHIFT)
    ========================= */
 #teaching {
   position: relative;
-  padding-left: 44px;
-}
-
-#teaching h2 {
-  margin-bottom: 26px; /* match other sections */
 }
 
 /* =========================
@@ -348,80 +341,81 @@ section h2 {
 .teaching-item {
   position: relative;
   margin-bottom: 26px;
-  padding-left: 6px;
+  padding-left: 44px; /* timeline space ONLY */
 }
 
 /* =========================
-   NODE
+   NODE (CENTERED)
    ========================= */
 .teaching-item::before {
   content: "";
   position: absolute;
-  left: calc(-1 * var(--timeline-x));
-  top: var(--node-offset);
+  left: var(--timeline-x);
+  top: 6px;
 
   width: var(--node-sm);
   height: var(--node-sm);
 
-  background-color: var(--accent); /* academic emphasis */
+  background: var(--accent);
   border-radius: 50%;
-  transform: translateX(50%);
+  transform: translateX(-50%);
   z-index: 2;
 }
 
-/* Most recent role */
+/* Most recent */
 .teaching-item:first-child::before {
   width: var(--node-lg);
   height: var(--node-lg);
 }
 
 /* =========================
-   CONNECTING LINE
+   VERTICAL LINE
    ========================= */
 .teaching-item::after {
   content: "";
   position: absolute;
-  left: calc(-1 * var(--timeline-x));
-  top: calc(var(--node-offset) + var(--node-sm) / 2);
+  left: var(--timeline-x);
+  top: calc(6px + var(--node-sm) / 2);
 
   width: var(--line-w);
   height: calc(100% + 26px);
 
-  background-color: var(--muted);
+  background: var(--muted);
+  transform: translateX(-50%);
 }
 
-/* No connector after final (oldest) item */
+/* Remove line after last item */
 .teaching-item:last-child::after {
   display: none;
 }
 
-/* Shorten top segment to meet arrow cleanly */
+/* =========================
+   TOP ARROW (LINE TERMINUS)
+   ========================= */
 .teaching-item:first-child::after {
-  height: calc(100% + 10px);
+  height: calc(100% + 14px);
 }
 
-/* =========================
-   ARROW (UPWARD TERMINUS)
-   ========================= */
-.teaching-item:first-child > .teaching-header::before {
+#teaching::before {
   content: "";
   position: absolute;
-  left: calc(-1 * var(--timeline-x) + 1px);
-  top: -12px;
+  left: var(--timeline-x);
+  top: 6px;
 
   width: 0;
   height: 0;
 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 8px solid var(--muted);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 9px solid var(--muted);
+
+  transform: translateX(-50%);
 }
 
 /* =========================
    HEADER
    ========================= */
 .teaching-header {
-  position: relative;
   font-weight: 500;
   line-height: 1.4;
   margin-bottom: 6px;
@@ -432,7 +426,7 @@ section h2 {
 }
 
 /* =========================
-   COURSE / ROLE LIST
+   LIST
    ========================= */
 .teaching-item ul {
   margin: 4px 0 0;
@@ -446,20 +440,16 @@ section h2 {
   margin-bottom: 4px;
 }
 
-.teaching-item li strong {
-  font-weight: 600;
-}
-
 /* =========================
    PRINT
    ========================= */
 @media print {
   .teaching-item::before,
   .teaching-item::after {
-    background-color: #000;
+    background: #000;
   }
 
-  .teaching-item:first-child > .teaching-header::before {
+  #teaching::before {
     border-bottom-color: #000;
   }
 }
