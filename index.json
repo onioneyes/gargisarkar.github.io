@@ -131,7 +131,7 @@
     {
       "year": 2025,
       "status": "under_review",
-      "authors": ["R. Negi", "Gargi Sarkar", "Sandeep K. Shukla"],
+      "authors": ["Rohit Negi", "Gargi Sarkar", "Sandeep K. Shukla"],
       "title": "AuditorMatch: A data-driven decision-support system for evaluating and selecting CERT-In empaneled cybersecurity auditors",
       "venue": "Computers & Security"
     },
@@ -140,10 +140,10 @@
       "year": 2025,
       "status": "preprint",
       "authors": [
-        "A. Sachdeva",
-        "R. Saravanan",
+        "Arush Sachdeva",
+        "Rajendraprasad Saravanan",
         "Gargi Sarkar",
-        "K. Vemuri",
+        "Kavita Vemuri",
         "Sandeep K. Shukla"
       ],
       "title": "BEACON: A Unified Behavioral-Tactical Framework for Explainable Cybercrime Analysis with Large Language Models",
