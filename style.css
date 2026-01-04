@@ -436,47 +436,70 @@ border-color: var(--accent);
    EDUCATION — FACULTY-GRADE, STABLE, ONE-LINE
    ===================================================== */
 
+/* =====================================================
+   EDUCATION — ELITE ACADEMIC STYLE
+   ===================================================== */
+
 #education .item {
   background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 10px;
 
-  padding: 14px 18px;
+  padding: 16px 18px;
   margin-bottom: 18px;
 
+  /* layout */
   display: flex;
-  align-items: baseline;
-  gap: 16px;
+  flex-direction: column;
+  gap: 4px;
 
   transition:
     border-color 0.25s ease,
     background-color 0.25s ease,
+    box-shadow 0.25s ease,
     transform 0.25s ease;
 }
 
-/* LEFT: Degree + Institution */
+/* ───────── TOP ROW: Degree + Institution | Date ───────── */
 #education .item strong {
-  flex: 1;
-  min-width: 0;              /* 🔑 critical */
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--primary);
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
-/* RIGHT: Date */
+/* Degree + Institution text (left) */
+#education .item strong::after {
+  content: "";
+  flex: 1;
+}
+
+/* Date (right) */
 #education .item em {
-  flex-shrink: 0;
   font-size: 0.85rem;
   font-style: normal;
+  font-weight: 500;
   color: var(--muted);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* Remove accidental line breaks */
+#education .item strong,
+#education .item em {
   white-space: nowrap;
 }
 
-/* Hover — SAME as Experience */
+/* Hover — EXACTLY matches Experience */
 #education .item:hover {
   border-color: var(--accent);
   background-color: #fdfefe;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
 
