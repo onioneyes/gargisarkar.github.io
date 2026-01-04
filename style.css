@@ -722,6 +722,22 @@ border-color: var(--accent);
 .skills-grid li:hover::before {
   color: var(--accent);
 }
+/* =====================================================
+   ACHIEVEMENTS / TALKS / ACTIVITIES – Hover
+   ===================================================== */
+#achievements .item,
+#talks_and_presentations .item,
+#activities .item {
+  transition: color 0.2s ease,
+              transform 0.2s ease;
+}
+
+#achievements .item:hover,
+#talks_and_presentations .item:hover,
+#activities .item:hover {
+  color: var(--primary);
+  transform: translateX(4px);
+}
 
 
 /* =====================================================
