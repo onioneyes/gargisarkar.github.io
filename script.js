@@ -188,6 +188,48 @@ function formatAnnouncementDate(dateStr) {
   });
 }
 
+
+function renderExperience(arr = []) {
+  const c = document.getElementById("experience");
+  if (!c) return;
+
+  /* ✅ Preserve the section header */
+  const header = c.querySelector("h2");
+  c.innerHTML = "";
+  if (header) c.appendChild(header);
+
+  if (!arr.length) return;
+
+  arr.forEach(e => {
+    const d = document.createElement("div");
+    d.className = "item";
+
+    const responsibilitiesHTML = (e.responsibilities || [])
+      .map(r => `<li>${r}</li>`)
+      .join("");
+
+    d.innerHTML = `
+      <strong>${e.role}</strong>, ${e.institution}<br>
+      <em>${e.period}</em>
+
+      ${
+        responsibilitiesHTML
+          ? `<ul class="experience-points">${responsibilitiesHTML}</ul>`
+          : ""
+      }
+
+      ${
+        e.note
+          ? `<div class="experience-note">${e.note}</div>`
+          : ""
+      }
+    `;
+
+    c.appendChild(d);
+  });
+}
+
+
 function renderEducation(arr = []) {
   const c = document.getElementById("education");
   if (!c || !arr.length) return;
