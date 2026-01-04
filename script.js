@@ -315,9 +315,10 @@ function renderPublications(pubs) {
   const journals = pubs.journals || [];
 
   renderSection(sections.published, journals.filter(p => p.status === "published"));
+    renderSection(sections.conference, pubs.conference_proceedings || []);
   renderSection(sections.preprint, journals.filter(p => p.status === "preprint"));
    renderSection(sections.under_review, journals.filter(p => p.status === "under_review"));
-  renderSection(sections.conference, pubs.conference_proceedings || []);
+ 
 }
 
 
