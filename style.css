@@ -53,16 +53,19 @@ body {
   font-family: inherit;
 }
 
+
+/* FIX: email links must NOT behave like profile links */
+.contact-emails a {
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.25;
+}
 .contact-emails {
   margin: 4px 0 0;
+  padding: 0;
 }
 
-/* Tight email spacing */
-.contact-emails a {
-  display: inline;
-  margin: 0;
-  line-height: 1.3;
-}
 
 
 /* Each logical block */
