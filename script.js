@@ -190,14 +190,16 @@ function formatAnnouncementDate(dateStr) {
 
 
 
-/* =========================================================
-   EXPERIENCE
-   ========================================================= */
 function renderExperience(arr = []) {
   const c = $("experience");
-  if (!c || !arr.length) return;
+  if (!c) return;
 
+  // ✅ Preserve header
+  const header = c.querySelector("h2");
   c.innerHTML = "";
+  if (header) c.appendChild(header);
+
+  if (!arr.length) return;
 
   arr.forEach(e => {
     const d = document.createElement("div");
