@@ -39,7 +39,7 @@ body {
   min-height: 100vh;
   padding-top: 14px;
 padding-left: 24px;   /* match nav horizontal padding */
-  padding-right: 20px;
+  padding-right: 28px;
   position: sticky;
   top: 0;
   background: #f4f6f9;
