@@ -33,7 +33,7 @@ body {
 }
 
 /* =====================================================
-   LEFT SIDEBAR (UX-REFINED)
+   LEFT SIDEBAR
    ===================================================== */
 .sidebar {
   width: 260px;
@@ -75,35 +75,28 @@ body {
   color: var(--text);
 }
 
-.sidebar p a {
-  font-weight: 600;
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.sidebar p a:hover {
-  text-decoration: underline;
-}
-
-.sidebar-block a {
+.sidebar a {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 6px;
   font-size: 0.9rem;
   color: var(--accent);
   text-decoration: none;
-  margin-top: 6px;
 }
 
-.sidebar-block i {
-  font-size: 1rem;
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.sidebar i {
   width: 18px;
+  font-size: 1rem;
   text-align: center;
-  color: var(--accent);
 }
 
 /* =====================================================
-   MAIN CONTENT WRAPPER
+   MAIN CONTENT
    ===================================================== */
 .main-content {
   flex: 1;
@@ -131,10 +124,10 @@ nav {
 }
 
 nav a {
+  text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--primary);
-  text-decoration: none;
 }
 
 nav a:hover {
@@ -155,6 +148,7 @@ nav a:hover {
   width: 180px;
   height: 180px;
   object-fit: contain;
+  object-position: center top;
   border-radius: 50%;
   border: 4px solid var(--primary);
   margin-bottom: 10px;
@@ -191,7 +185,25 @@ section h2 {
 }
 
 /* =====================================================
-   ANNOUNCEMENTS – SINGLE BOX + ROTATOR
+   BASE CARD (REUSABLE EVERYWHERE)
+   ===================================================== */
+.card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent);
+}
+
+/* =====================================================
+   ANNOUNCEMENTS
    ===================================================== */
 #announcements {
   position: relative;
@@ -199,7 +211,6 @@ section h2 {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 26px 20px 18px 48px;
-  margin-top: 18px;
 }
 
 #announcements::before {
@@ -212,24 +223,10 @@ section h2 {
   background: var(--border);
 }
 
-.announce-rotator {
-  position: relative;
-  min-height: 120px;
-}
-
 .announce-item {
   position: relative;
-  display: flex;
-  gap: 22px;
+  margin-bottom: 22px;
   transition: opacity 0.8s ease;
-}
-
-.announce-item.hidden {
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .announce-dot {
@@ -245,21 +242,8 @@ section h2 {
   justify-content: center;
 }
 
-.announce-icon {
-  font-size: 11px;
-  color: #fff;
-}
-
 .announce-card {
   margin-left: 22px;
-  width: 100%;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.announce-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.14);
 }
 
 .announce-date {
@@ -268,86 +252,42 @@ section h2 {
 }
 
 /* =====================================================
-   BASE CARD – GLOBAL (HOMOGENEOUS)
+   SKILLS
    ===================================================== */
-.card {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 18px;
-  margin-bottom: 18px;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.card:hover {
-  border-color: var(--accent);
-  background: #fdfefe;
-}
-
-/* =====================================================
-   EXPERIENCE
-   ===================================================== */
-#experience {
-  margin-top: 24px;
-}
-
-#experience .item strong {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-#experience .item em {
-  display: block;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.experience-points {
-  margin: 10px 0 6px 18px;
-}
-
-.experience-points li {
+.skills-grid li {
   font-size: 0.95rem;
-  margin-bottom: 6px;
+  padding-left: 14px;
+  position: relative;
 }
 
-.experience-note {
-  font-size: 0.85rem;
+.skills-grid li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
   color: var(--muted);
-  font-style: italic;
 }
 
 /* =====================================================
-   PUBLICATIONS
+   SCROLL REVEAL
    ===================================================== */
-.pub-item {
-  margin-bottom: 22px;
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.pub-links a {
-  margin-right: 14px;
-  font-size: 0.9rem;
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.pub-links a:hover {
-  text-decoration: underline;
-}
-
-.bibtex {
-  margin-top: 10px;
-  padding: 12px;
-  background: var(--bg-light);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font-size: 0.85rem;
-  white-space: pre-wrap;
-}
-
-.bibtex[hidden] {
-  display: none;
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* =====================================================
@@ -377,4 +317,33 @@ section h2 {
     animation: none !important;
     transition: none !important;
   }
+}
+/* =====================================================
+   HOMOGENEOUS SUBTLE HOVER FOR ALL BOXES
+   (same effect as Experience section)
+   ===================================================== */
+
+/* Experience (already good, kept for consistency) */
+#experience .item:hover {
+  border-color: var(--accent);
+  background: #fdfefe;
+}
+
+/* Publications */
+.pub-item:hover {
+  border-color: var(--accent);
+  background: #fdfefe;
+}
+
+/* Announcement cards */
+.announce-card:hover {
+  border-color: var(--accent);
+  background: #fdfefe;
+}
+
+/* Any generic boxed item */
+.item:hover,
+.ref:hover {
+  border-color: var(--accent);
+  background: #fdfefe;
 }
