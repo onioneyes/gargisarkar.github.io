@@ -37,19 +37,23 @@ body {
 .sidebar {
   width: 260px;
   min-height: 100vh;
-  padding: 28px 20px;
+  padding-top: 14px;
   position: sticky;
   top: 0;
   background: #f4f6f9;
   border-right: 1px solid var(--border);
-  font-family: "Segoe UI", sans-serif;
+ font-family: inherit;
 }
 
 /* Each logical block */
 .sidebar-block {
   margin-bottom: 22px;
 }
+/* Optional: tighten first block spacing */
 
+.sidebar-block:first-child {
+  margin-top: 0;
+}
 /* Block headings */
 .sidebar h3 {
   font-size: 1.05rem;
