@@ -433,57 +433,34 @@ border-color: var(--accent);
 }
 
 /* =====================================================
-   EDUCATION
+   EDUCATION – ALIGN DEGREE, DATE, LOCATION (FIX)
    ===================================================== */
-#education {
-  margin-top: 24px;
-  scroll-margin-top: 90px;
-}
 
 #education .item {
-  padding: 14px 16px;
-  margin-bottom: 18px;
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  transition: border-color 0.25s ease, background 0.25s ease,
-              box-shadow 0.25s ease, transform 0.25s ease;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: 4px;
+  column-gap: 16px;
 }
 
-/* Degree / Institution */
+/* Degree (left) */
 #education .item strong {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--primary);
+  grid-column: 1 / 2;
 }
 
-/* Duration / University */
+/* Date / Period (right, same row as degree) */
 #education .item em {
-  display: block;
-  margin-top: 2px;
-  font-size: 0.85rem;
+  grid-column: 2 / 3;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Institution + location (full width, next line) */
+#education .item span,
+#education .item br + span {
+  grid-column: 1 / -1;
+  font-size: 0.9rem;
   color: var(--muted);
-}
-
-/* Details / coursework */
-.education-points {
-  margin: 10px 0 6px 18px;
-  padding: 0;
-}
-
-.education-points li {
-  font-size: 0.95rem;
-  line-height: 1.45;
-  margin-bottom: 6px;
-  color: var(--text);
-}
-
-/* Hover – SAME as Experience */
-#education .item:hover {
-  border-color: var(--accent);
-  background: #fdfefe;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
 }
 
 
