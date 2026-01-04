@@ -721,21 +721,43 @@ border-color: var(--accent);
   color: var(--accent);
 }
 
-/* =====================================================
-   ACHIEVEMENTS / TALKS / ACTIVITIES – Hover
-   ===================================================== */
-#achievements .item,
-#talks_and_presentations .item,
-#activities .item {
-  transition: color 0.2s ease,
-              transform 0.2s ease;
+/* ================= ACHIEVEMENTS ================= */
+#achievements .item {
+  background: transparent;
+  border: none;
+  padding-left: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-#achievements .item:hover,
-#talks_and_presentations .item:hover,
+#achievements .item:hover {
+  color: var(--primary);
+  transform: translateX(6px);
+}
+
+/* ================= TALKS & PRESENTATIONS ================= */
+#talks_and_presentations .item {
+  background: transparent;
+  border: none;
+  padding-left: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+#talks_and_presentations .item:hover {
+  color: var(--primary);
+  transform: translateX(6px);
+}
+
+/* ================= ACTIVITIES ================= */
+#activities .item {
+  background: transparent;
+  border: none;
+  padding-left: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
 #activities .item:hover {
   color: var(--primary);
-  transform: translateX(4px);
+  transform: translateX(6px);
 }
 
 
