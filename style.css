@@ -565,6 +565,38 @@ border-color: var(--accent);
 .bibtex[hidden] {
   display: none;
 }
+/* =====================================================
+   RESEARCH – Hover (same as Experience / Education)
+   ===================================================== */
+#research .item {
+  transition: border-color 0.25s ease,
+              background 0.25s ease,
+              box-shadow 0.25s ease,
+              transform 0.25s ease;
+}
+
+#research .item:hover {
+  border-color: var(--accent);
+  background: #fdfefe;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+/* =====================================================
+   PROJECTS – Hover (same as Experience / Research)
+   ===================================================== */
+#projects .item {
+  transition: border-color 0.25s ease,
+              background 0.25s ease,
+              box-shadow 0.25s ease,
+              transform 0.25s ease;
+}
+
+#projects .item:hover {
+  border-color: var(--accent);
+  background: #fdfefe;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
 
 /* =====================================================
    TEACHING
