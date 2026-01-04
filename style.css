@@ -55,8 +55,8 @@ body {
 
 
 /* Each logical block */
-.sidebar-block {
-  margin-bottom: 22px;
+sidebar-block {
+  margin-bottom: 18px;
 }
 /* Optional: tighten first block spacing */
 
@@ -66,7 +66,7 @@ body {
 /* Block headings */
 .sidebar h3 {
   font-size: 1.05rem;
-  margin-bottom: 8px;
+margin-bottom: 6px;
   color: var(--primary);
   border-bottom: 2px solid var(--primary);
   padding-bottom: 4px;
@@ -75,7 +75,7 @@ body {
 /* Lists (Research interests) */
 .sidebar ul {
   padding-left: 18px;
-  margin: 6px 0 0;
+   margin-top: 4px;
 }
 
 .sidebar li {
@@ -85,9 +85,9 @@ body {
 
 /* Paragraph blocks (Address + Email) */
 .sidebar p {
-  margin: 6px 0 0;
+   margin-top: 4px;
+  line-height: 1.35;
   font-size: 0.9rem;
-  line-height: 1.4;
   color: var(--text);
 }
 
@@ -107,7 +107,7 @@ body {
 /* Standalone links (Profiles section) */
 .sidebar > .sidebar-block a {
   display: block;
-  margin-top: 4px;
+  margin-top: 6px;
   font-weight: 600;
   color: var(--accent);
   text-decoration: none;
