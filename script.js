@@ -188,76 +188,30 @@ function formatAnnouncementDate(dateStr) {
   });
 }
 
-
-
-function renderExperience(arr = []) {
-  const c = $("experience");
-  if (!c) return;
-
-  // ✅ Preserve header
-  const header = c.querySelector("h2");
-  c.innerHTML = "";
-  if (header) c.appendChild(header);
-
-  if (!arr.length) return;
-
-  arr.forEach(e => {
-    const d = document.createElement("div");
-    d.className = "item";
-
-    const responsibilitiesHTML = (e.responsibilities || [])
-      .map(r => `<li>${r}</li>`)
-      .join("");
-
-    d.innerHTML = `
-      <strong>${e.role}</strong>, ${e.institution}<br>
-      <em>${e.period}</em>
-
-      ${
-        responsibilitiesHTML
-          ? `<ul class="experience-points">${responsibilitiesHTML}</ul>`
-          : ""
-      }
-
-      ${
-        e.note
-          ? `<div class="experience-note">${e.note}</div>`
-          : ""
-      }
-    `;
-
-    c.appendChild(d);
-  });
-}
-
-
 function renderEducation(arr = []) {
   const c = document.getElementById("education");
-  if (!c) return;
+  if (!c || !arr.length) return;
 
-  // ✅ Preserve header
   const header = c.querySelector("h2");
   c.innerHTML = "";
   if (header) c.appendChild(header);
 
-  if (!arr.length) return;
-
   arr.forEach(e => {
     const d = document.createElement("div");
-    d.className = "item";
-
-    const degree = e.degree.replace(/\s+/g, " ").trim();
-    const institution = e.institution.replace(/\s+/g, " ").trim();
-    const period = (e.period || e.year || "").trim();
+    d.className = "item education-item";
 
     d.innerHTML = `
-      <strong>${degree}, ${institution}</strong>
-      <em>${period}</em>
+      <div class="edu-header">
+        <span class="edu-degree">${e.degree}</span>
+        <span class="edu-period">${e.period || e.year || ""}</span>
+      </div>
+      <div class="edu-institution">${e.institution}</div>
     `;
 
     c.appendChild(d);
   });
 }
+
 
 
 
