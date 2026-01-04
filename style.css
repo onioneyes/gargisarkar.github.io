@@ -433,7 +433,7 @@ border-color: var(--accent);
 }
 
 /* =====================================================
-   EDUCATION — ONE-LINE DEGREE + COLLEGE + DATE (ELITE)
+   EDUCATION — FACULTY-GRADE, STABLE, ONE-LINE
    ===================================================== */
 
 #education .item {
@@ -446,7 +446,6 @@ border-color: var(--accent);
 
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
   gap: 16px;
 
   transition:
@@ -455,35 +454,32 @@ border-color: var(--accent);
     transform 0.25s ease;
 }
 
-/* LEFT SIDE: Degree + Institution (SAME LINE) */
+/* LEFT: Degree + Institution */
 #education .item strong {
+  flex: 1;                    /* ⭐ prevents collapse */
+  min-width: 0;               /* ⭐ critical fix */
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--primary);
   line-height: 1.45;
+  white-space: normal;
 }
 
-/* RIGHT SIDE: Date */
+/* RIGHT: Date */
 #education .item em {
+  flex-shrink: 0;             /* ⭐ prevents squeeze */
   font-size: 0.85rem;
   font-style: normal;
-  color: var(--primary);
+  color: var(--muted);
   white-space: nowrap;
-  margin-left: auto;
 }
 
-/* Hide location line if present (optional but recommended) */
-#education .item span {
-  display: none;
-}
-
-/* Hover — SAME AS EXPERIENCE */
+/* Hover — same as Experience */
 #education .item:hover {
   border-color: var(--accent);
   background-color: #fdfefe;
   transform: translateY(-2px);
 }
-
 
 
 
