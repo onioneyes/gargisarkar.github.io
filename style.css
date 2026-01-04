@@ -433,8 +433,7 @@ border-color: var(--accent);
 }
 
 /* =====================================================
-   EDUCATION — HIGH-CLASS ACADEMIC DESIGN
-   (Experience-consistent, faculty-grade)
+   EDUCATION — FACULTY / HIGH-CLASS (FINAL FIX)
    ===================================================== */
 
 #education .item {
@@ -442,13 +441,12 @@ border-color: var(--accent);
   border: 1px solid var(--border);
   border-radius: 10px;
 
-  padding: 16px 18px;
-  margin-bottom: 20px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
 
   display: grid;
   grid-template-columns: 1fr auto;
-  row-gap: 6px;
-  column-gap: 20px;
+  align-items: baseline;
 
   transition:
     border-color 0.25s ease,
@@ -456,41 +454,44 @@ border-color: var(--accent);
     transform 0.25s ease;
 }
 
-/* Degree — primary visual anchor */
+/* DEGREE + INSTITUTION — visually one unit */
 #education .item strong {
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--primary);
-  line-height: 1.35;
+  line-height: 1.4;
+
   grid-column: 1 / 2;
 }
 
-/* Date / duration — restrained, right-aligned */
+/* DATE — same row, restrained */
 #education .item em {
   font-size: 0.85rem;
   font-style: normal;
   color: var(--muted);
 
   grid-column: 2 / 3;
-  text-align: right;
   white-space: nowrap;
-  align-self: center;
+  text-align: right;
 }
 
-/* Institution + location — subtle authority */
+/* LOCATION — immediately follows, NOT floating */
 #education .item span {
   grid-column: 1 / -1;
-  font-size: 0.92rem;
+
+  margin-top: 2px;        /* 🔴 THIS is the key */
+  font-size: 0.9rem;
   color: var(--muted);
-  line-height: 1.45;
+  line-height: 1.3;
 }
 
-/* Hover — EXACT SAME LANGUAGE AS EXPERIENCE */
+/* Hover — EXACTLY like Experience */
 #education .item:hover {
   border-color: var(--accent);
   background-color: #fdfefe;
   transform: translateY(-2px);
 }
+
 
 
 /* =====================================================
