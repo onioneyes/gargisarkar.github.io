@@ -706,7 +706,7 @@ border-color: var(--accent);
   color: var(--muted);
 }
 /* =====================================================
-   SKILLS – Hover (subtle, academic)
+   TECHNICAL SKILLS – Hover
    ===================================================== */
 .skills-grid li {
   transition: color 0.2s ease,
@@ -717,11 +717,10 @@ border-color: var(--accent);
   color: var(--primary);
   transform: translateX(4px);
 }
-
-/* Optional: bullet emphasis on hover */
 .skills-grid li:hover::before {
   color: var(--accent);
 }
+
 /* =====================================================
    ACHIEVEMENTS / TALKS / ACTIVITIES – Hover
    ===================================================== */
@@ -752,6 +751,18 @@ border-color: var(--accent);
 .visible {
   opacity: 1;
   transform: translateY(0);
+}
+/* =====================================================
+   REFERENCES – Hover (Subtle, Academic)
+   ===================================================== */
+.ref {
+  transition: border-color 0.2s ease,
+              background-color 0.2s ease;
+}
+
+.ref:hover {
+  border-color: var(--accent);
+  background-color: #fdfefe;
 }
 
 /* =====================================================
