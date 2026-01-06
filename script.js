@@ -434,20 +434,40 @@ function renderTeaching(arr = []) {
 }
 
 
+
 /* =========================================================
-   ACHIEVEMENTS
+   ACHIEVEMENTS (SAFE CATEGORY EMPHASIS)
    ========================================================= */
 function renderAchievements(arr = []) {
   const c = $("achievements");
-  if (!c) return;
+  if (!c || !arr.length) return;
 
   arr.forEach(a => {
     const d = document.createElement("div");
     d.className = "item";
-    d.textContent = "• " + a;
+
+    // Split ONLY on dash/en-dash surrounded by spaces
+    const split = a.split(/\s[–-]\s/);
+
+    d.append("• ");
+
+    if (split.length > 1) {
+      const strong = document.createElement("strong");
+      strong.textContent = split[0];
+
+      const rest = document.createTextNode(" – " + split.slice(1).join(" – "));
+
+      d.appendChild(strong);
+      d.appendChild(rest);
+    } else {
+      // fallback: no category delimiter
+      d.appendChild(document.createTextNode(a));
+    }
+
     c.appendChild(d);
   });
 }
+
 
 /* =========================================================
    TALKS
