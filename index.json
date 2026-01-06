@@ -373,13 +373,14 @@
     }
   ],
 
-  "achievements": [
-    "C3iHub Research Fellowship Awardee (2022–2025)",
-    "Darkathon 2022 Finalist – Narcotics Control Bureau, Government of India",
-    "Qualified GATE 2021 in Mathematics",
-    "Qualified JAM 2018 in Mathematics",
-    "Qualified JEE Mains 2015"
-  ],
+"achievements": [
+  "C3iHub Research Fellowship Awardee for Research in Cybersecurity (2022–2025), awarded for advanced research contributions in cybercrime investigation and digital security.",
+  "Darkathon 2022 Finalist – Selected by the Narcotics Control Bureau, Government of India, for proposing innovative solutions addressing anonymity and illicit trade in dark web narcotics markets.",
+  "Qualified GATE 2021 in Mathematics – National-level competitive examination assessing advanced mathematical aptitude for postgraduate education and public sector technical roles.",
+  "Qualified JAM 2018 in Mathematics – Highly competitive national examination for admission to M.Sc. programs in IITs, NITs, and other centrally funded institutions.",
+  "Qualified JEE Mains 2015 – National-level entrance examination for undergraduate engineering programs in IITs, NITs, and other centrally funded technical institutions."
+],
+
 
   "talks_and_presentations": [
     "Invited talk at ARES 2023, Italy",
