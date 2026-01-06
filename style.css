@@ -753,11 +753,13 @@ border-color: var(--accent);
   transform: translateY(-2px);
 }
 
-/* Optional emphasis for fellowship / exams */
+
 #achievements .item strong {
-  font-weight: 600;
-  color: var(--primary);
+  font-size: 1.05rem;        /* same as .pub-item strong */
+  font-weight: 600;          /* same as Teaching header */
+  color: var(--primary);     /* same color language */
 }
+
 
 
 
